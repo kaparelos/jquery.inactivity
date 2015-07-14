@@ -3,46 +3,46 @@ The simplest yet effective jQuery inactivity (idle) plugin
 
 Download
 --------
-* [Uncompressed ~2 kB](https://raw.github.com/afklondon/jquery.inactivity/master/src/inactivity.js)
+* [Uncompressed ~2.5 kB](https://raw.github.com/afklondon/jquery.inactivity/master/src/jquery.inactivity.js)
+* [Compressed ~1 kB](https://raw.github.com/afklondon/jquery.inactivity/master/src/jquery.inactivity.min.js)
 
 Purpose
 -------
-Listen for mouse, keyboard and other custom events inactivity (idle) and fire global "activity" and "inactivity" events.
+Listen for mouse, keyboard, touch and other custom events inactivity (idle) and fire global "activity" and "inactivity" events
 
 Usage
 -----
-Since this is a very simple plugin, the usage is simple too.
-
-First, add the jquery.inactivity.js to your document along with jQuery library:
+Add either the jquery.inactivity.js or jquery.inactivity.min.js along with the jQuery library to your HTML document
 
 ```html
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script type="text/javascript" src="jquery.inactivity.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="jquery.inactivity.min.js"></script>
 ```
 
-Then, just call the function in the element that you want to track inactivity:
+Then call the plugin in the element that you want to attach it
 
 ```javascript
-// bind to document
+// attach to document
 $(document).inactivity();
 
-// bind to an element
-$("#myElement").inactivity();
+// attach to an element
+$("#element").inactivity();
 ```
 
-You can set your own options when you call the plugin for first time or either later on at runtime:
+You can set your own options when you call the plugin for first time but you can also do this later on at runtime in exactly the same way
 
 ```javascript
 $(document).inactivity( {
     interval: 1000, // the timeout until the inactivity event fire [default: 3000]
     mouse: true, // listen for mouse inactivity [default: true]
     keyboard: false, // listen for keyboard inactivity [default: true]
-    customEvents: "touchstart touchmove wheel DOMMouseScroll MSPointerDown MSPointerMove", // listen for extra custom events [default: '']
-    triggerAll: true, // when set to false only the first activity event will be fired [default: false]
+    touch: false, // listen for touch inactivity [default: true]
+    customEvents: "customEventName", // listen for custom events [default: ""]
+    triggerAll: true, // if set to false only the first "activity" event will be fired [default: false]
 });
 ```
 
-If you want to handle the "activity" and "inactivity" events here's the way:
+This is how you handle the "activity" and "inactivity" events 
 
 ```javascript
 $(document).on("activity", function(){
@@ -54,19 +54,19 @@ $(document).on("inactivity", function(){
 });
 ```
 
-And finally that's how you stop tracking inactivity:
+And finally that's how you unattach the script
 
 ```javascript
-// unbind from document
+// unattach from document
 $(document).inactivity("destroy");
 
-// unbind from an element
-$("#myElement").inactivity("destroy");
+// unattach from an element
+$("#element").inactivity("destroy");
 ```
 
 Dependencies
 -------
-jQuery 1.7+ (tested with 2.1.4)
+jQuery 1.7+ (only tested with 2.1.4)
 
 Browser Support
 -------
@@ -84,4 +84,4 @@ Browser Support
 
 Bug?
 -------
-Please [submit a ticket](https://github.com/afklondon/jquery.inactivity/issues/new). Thank you :)
+Please do [submit a ticket](https://github.com/afklondon/jquery.inactivity/issues/new) if you notice a bug. Thank you very much :)
