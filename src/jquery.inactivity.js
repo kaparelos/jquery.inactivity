@@ -1,6 +1,6 @@
 /*
 
- jQuery Inactivity plugin 1.0
+ jQuery Inactivity plugin 1.1
  The simplest yet effective jQuery inactivity (idle) plugin
  
  Copyright (C) 2015 AFK - Alexandros Filos Kaparelos
@@ -16,6 +16,7 @@
   // initialize variables
   var timeout;
   var firstEvent = true;
+  var settings;
 
   $.fn.inactivity = function (options) {
     
@@ -24,14 +25,16 @@
     // if destroy requested
     if (options === "destroy") {
       reset(); // reset plugin
+      settings.customEvents = undefined; // reset customEvents in settings
       return;
     }
     
     // set default settings
-    var settings = $.extend({
+    settings = $.extend({
       interval: 3000,
       mouse: true,
       keyboard: true,
+      touch: true,
       customEvents: "",
       triggerAll: false
     }, options);
@@ -39,8 +42,9 @@
     reset(); // reset plugin
     
     // set event listeners
-    if (settings.mouse) element.on("mousemove", onActivity);
-    if (settings.keyboard) element.on("keypress", onActivity);
+    if (settings.mouse) element.on("mousemove mousedown mousewheel wheel DOMMouseScroll MSPointerDown MSPointerMove", onActivity);
+    if (settings.keyboard) element.on("keypress keydown keyup", onActivity);
+    if (settings.touch) element.on("touchstart touchmove touchend", onActivity);
     if (settings.customEvents !== '') element.on(settings.customEvents, onActivity);
 
     // called when any type of set event is captured
@@ -66,7 +70,7 @@
 
     // resets all event listeners and variables
     function reset() {
-      element.off("mousemove keypress");
+      element.off("mousemove mousedown mousewheel wheel DOMMouseScroll MSPointerDown MSPointerMove keypress keydown keyup touchstart touchmove touchend");
       if (settings !== undefined){if(settings.customEvents !== ""){element.off(settings.customEvents)}};
       timeout = undefined;
       firstEvent = undefined;
