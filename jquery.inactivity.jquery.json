@@ -1,0 +1,40 @@
+{
+  "name": "jquery.inactivity",
+  "version": "1.1.0",
+  "title": "jQuery Inactivity plugin",
+  "author": {
+    "name": "Alexandros Filos Kaparelos",
+    "url": "http://www.afklondon.co.uk/"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ],
+  "dependencies": {
+    "jquery": ">=1.7"
+  },
+  "description": "The simplest yet effective jQuery inactivity (idle) plugin",
+  "keywords": [
+    "inactivity",
+    "idle",
+    "detection",
+    "callback",
+    "mouse",
+    "keyboard",
+    "touch",
+    "events",
+    "jquery"
+  ],
+  "homepage": "https://github.com/afklondon/jquery.inactivity",
+  "docs": "https://github.com/afklondon/jquery.inactivity/blob/master/README.md",
+  "demo": "https://github.com/afklondon/jquery.inactivity",
+  "bugs": "https://github.com/afklondon/jquery.inactivity/issues",
+  "maintainers": [
+    {
+      "name": "Alexandros Filos Kaparelos",
+      "url": "http://www.afklondon.co.uk/"
+    }
+  ]
+}
