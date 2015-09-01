@@ -1,6 +1,6 @@
 /*
 
- jQuery Inactivity plugin 1.1
+ jQuery Inactivity plugin 1.2
  The simplest yet effective jQuery inactivity (idle) plugin
  
  Copyright (C) 2015 AFK - Alexandros Filos Kaparelos
@@ -15,7 +15,7 @@
 
   // initialize variables
   var timeout;
-  var firstEvent = true;
+  var firstEvent;
   var settings;
 
   $.fn.inactivity = function (options) {
