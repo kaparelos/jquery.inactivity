@@ -25,8 +25,6 @@
 
   $.fn.inactivity = function (opts) {
     
-    console.log("I am created");
-    
     var $el = $(this);
     
     clear($el);
@@ -45,8 +43,6 @@
       triggerAll: false
     }, opts);
     
-    console.log(settings);
-    
     // set listeners
     if (settings.mouse)
       $el.on(events.mouseEvents, onActivity);
@@ -59,41 +55,38 @@
     
     if (settings.customEvents !== '')
       $el.on(settings.customEvents, onActivity);
-  };
-  
-  function onActivity() {
-
-    window.clearTimeout(timeout);
-    timeout = window.setTimeout(onInactivity, settings.timeout);
-
-    if (settings.triggerAll || firstEvent)
-      $(document).trigger("activity"); // fire event
-
-    if (firstEvent)
-      firstEvent = false;
-  };
-  
-  function onInactivity() {
     
-    if (!settings.triggerAll)
+    function onActivity() {
+
+      window.clearTimeout(timeout);
+      timeout = window.setTimeout(onInactivity, settings.timeout);
+
+      if (settings.triggerAll || firstEvent)
+        $el.trigger("activity"); // fire event
+
+      if (firstEvent)
+        firstEvent = false;
+    };
+
+    function onInactivity() {
+      
       firstEvent = true;
-    
-    $(document).trigger("inactivity"); // fire event
-  };
-  
-  // clear any event listeners and reset plugin
-  function clear($el) {
-    
-    $el.off(events.mouseEvents);
-    $el.off(events.keyboardEvents);
-    $el.off(events.touchEvents);
-    $el.off(settings.customEvents);
-    
-    console.log(settings);
-    console.log(settings.customEvents);
-    
-    timeout = undefined;
-    firstEvent = false;
+      $el.trigger("inactivity"); // fire event
+    };
+
+    // clear any event listeners and reset plugin
+    function clear($el) {
+
+      $el.off(events.mouseEvents);
+      $el.off(events.keyboardEvents);
+      $el.off(events.touchEvents);
+      $el.off(settings.customEvents);
+
+      window.clearTimeout(timeout);
+      
+      firstEvent = true;
+    };
+
   };
 
 })(jQuery);
