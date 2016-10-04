@@ -51,7 +51,7 @@ $(document).on("inactivity", function(){
 });
 ```
 
-And that's how you unattach the script
+And that's how you unattach the plugin
 
 ```javascript
 // unattach from document
