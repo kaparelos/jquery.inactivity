@@ -1,81 +1,99 @@
 /*
 
- jQuery Inactivity plugin 1.2
- The simplest yet effective jQuery inactivity (idle) plugin
+ jQuery Inactivity plugin 1.3
+ The simplest yet effective jQuery idle plugin
  
- Copyright (C) 2015 AFK - Alexandros Filos Kaparelos
+ https://github.com/afklondon/jquery.inactivity
+ 
  Available via the MIT license
-
- https://github.com/afklondon/jquery.inactivity for details
+ by Alexandros Filos K.
 
 */
 
 (function ($) {
   "use strict";
 
-  // initialize variables
+  // variables
   var timeout;
-  var firstEvent;
-  var settings;
+  var firstEvent = true;
+  var settings = {};
+  var events = {
+    mouseEvents: "mousemove mousedown mousewheel wheel DOMMouseScroll MSPointerDown MSPointerMove",
+    keyboardEvents: "keypress keydown keyup",
+    touchEvents: "touchstart touchmove touchend"
+  };
 
-  $.fn.inactivity = function (options) {
+  $.fn.inactivity = function (opts) {
     
-    var element = $(this);
+    console.log("I am created");
     
-    // if destroy requested
-    if (options === "destroy") {
-      reset(); // reset plugin
-      settings.customEvents = undefined; // reset customEvents in settings
+    var $el = $(this);
+    
+    clear($el);
+    
+    // when requested to destroy
+    if (opts === "destroy")
       return;
-    }
     
-    // set default settings
+    // defaults
     settings = $.extend({
-      interval: 3000,
+      timeout: 3000,
       mouse: true,
       keyboard: true,
       touch: true,
       customEvents: "",
       triggerAll: false
-    }, options);
-
-    reset(); // reset plugin
+    }, opts);
     
-    // set event listeners
-    if (settings.mouse) element.on("mousemove mousedown mousewheel wheel DOMMouseScroll MSPointerDown MSPointerMove", onActivity);
-    if (settings.keyboard) element.on("keypress keydown keyup", onActivity);
-    if (settings.touch) element.on("touchstart touchmove touchend", onActivity);
-    if (settings.customEvents !== '') element.on(settings.customEvents, onActivity);
+    console.log(settings);
+    
+    // set listeners
+    if (settings.mouse)
+      $el.on(events.mouseEvents, onActivity);
+    
+    if (settings.keyboard)
+      $el.on(events.keyboardEvents, onActivity);
+    
+    if (settings.touch)
+      $el.on(events.touchEvents, onActivity);
+    
+    if (settings.customEvents !== '')
+      $el.on(settings.customEvents, onActivity);
+  };
+  
+  function onActivity() {
 
-    // called when any type of set event is captured
-    function onActivity() {
+    window.clearTimeout(timeout);
+    timeout = window.setTimeout(onInactivity, settings.timeout);
 
-      window.clearTimeout(timeout); // clear timeout
-      timeout = window.setTimeout(onInactivity, settings.interval); // set a new timeout
+    if (settings.triggerAll || firstEvent)
+      $(document).trigger("activity"); // fire event
 
-      if (!settings.triggerAll && firstEvent) { // if not triggering all events and this is the first event captured
-        $(document).trigger("activity"); //fire global event
-        firstEvent = false;
-      } else if (settings.triggerAll) { // else if triggering all events
-        $(document).trigger("activity"); //fire global event
-      }
-      
-    };
-
-    // called when the timeout finishes
-    function onInactivity() {
-      if (!settings.triggerAll) firstEvent = true; // if not triggering all events reset variable
-      $(document).trigger("inactivity"); //fire global event
-    };
-
-    // resets all event listeners and variables
-    function reset() {
-      element.off("mousemove mousedown mousewheel wheel DOMMouseScroll MSPointerDown MSPointerMove keypress keydown keyup touchstart touchmove touchend");
-      if (settings !== undefined){if(settings.customEvents !== ""){element.off(settings.customEvents)}};
-      timeout = undefined;
-      firstEvent = undefined;
-    };
-
-  }
+    if (firstEvent)
+      firstEvent = false;
+  };
+  
+  function onInactivity() {
+    
+    if (!settings.triggerAll)
+      firstEvent = true;
+    
+    $(document).trigger("inactivity"); // fire event
+  };
+  
+  // clear any event listeners and reset plugin
+  function clear($el) {
+    
+    $el.off(events.mouseEvents);
+    $el.off(events.keyboardEvents);
+    $el.off(events.touchEvents);
+    $el.off(settings.customEvents);
+    
+    console.log(settings);
+    console.log(settings.customEvents);
+    
+    timeout = undefined;
+    firstEvent = false;
+  };
 
 })(jQuery);
