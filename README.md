@@ -60,7 +60,7 @@ $(document).inactivity("destroy");
 
 Dependencies
 -------
-jQuery 1.7+ (tested with 2.1.4 and 3.0.0)
+jQuery 1.7+, tested with 2.1.4 and 3.0.0
 
 Browser Support
 -------
