@@ -1,6 +1,6 @@
 /*
 
- jQuery Inactivity plugin 1.3
+ jQuery Inactivity plugin 1.3.1
  The simplest yet effective jQuery idle plugin
 
  https://github.com/afklondon/jquery.inactivity
@@ -71,7 +71,7 @@
       timeout = window.setTimeout(onInactivity, settings.timeout);
 
       if (settings.triggerAll || firstEvent) {
-        $el.trigger("activity" + namespace);
+        $el.trigger("activity");
       }
 
       if (firstEvent) {
@@ -81,7 +81,7 @@
 
     function onInactivity() {
       firstEvent = true;
-      $el.trigger("inactivity" + namespace);
+      $el.trigger("inactivity");
     }
 
     function addNamespace(eventString) {
