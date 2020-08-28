@@ -1,10 +1,10 @@
 {
   "name": "jquery.inactivity",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "title": "jQuery Inactivity plugin",
   "author": {
-    "name": "Alexandros Filos K.",
-    "url": "http://github.com/afklondon/"
+    "name": "Alexandros Filos Kaparelos (readyforaliens)",
+    "url": "http://github.com/readyforaliens/"
   },
   "licenses": [
     {
@@ -15,7 +15,7 @@
   "dependencies": {
     "jquery": ">=1.7"
   },
-  "description": "The simplest yet effective jQuery idle plugin [Fork with fixes]",
+  "description": "The simplest yet effective jQuery idle (inactivity) plugin",
   "keywords": [
     "inactivity",
     "idle",
@@ -27,14 +27,14 @@
     "events",
     "jquery"
   ],
-  "homepage": "https://github.com/RyanEwen/jquery.inactivity",
-  "docs": "https://github.com/RyanEwen/jquery.inactivity/blob/master/README.md",
-  "demo": "https://github.com/RyanEwen/jquery.inactivity",
-  "bugs": "https://github.com/RyanEwen/jquery.inactivity/issues",
+  "homepage": "https://github.com/readyforaliens/jquery.inactivity",
+  "docs": "https://github.com/readyforaliens/jquery.inactivity/blob/master/README.md",
+  "demo": "https://github.com/readyforaliens/jquery.inactivity",
+  "bugs": "https://github.com/readyforaliens/jquery.inactivity/issues",
   "maintainers": [
     {
-      "name": "Alexandros Filos K.",
-      "url": "http://github.com/afklondon/"
+      "name": "Alexandros Filos Kaparelos (readyforaliens)",
+      "url": "http://github.com/readyforaliens/"
     }
   ]
 }
