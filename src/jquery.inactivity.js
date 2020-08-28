@@ -1,19 +1,19 @@
 /*
 
- jQuery Inactivity plugin 1.3.1
- The simplest yet effective jQuery idle plugin
+ jQuery Inactivity plugin 1.3.2
+ The simplest yet effective jQuery idle (inactivity) plugin
 
- https://github.com/afklondon/jquery.inactivity
+ https://github.com/readyforaliens/jquery.inactivity
 
  Available via the MIT license
- by Alexandros Filos K.
+ by Alexandros Filos Kaparelos (readyforaliens)
 
 */
 
 (function ($) {
   "use strict";
 
-  // variables
+  // vars
   var timeout;
   var firstEvent = true;
   var settings = {};
@@ -44,12 +44,12 @@
 
     clear($el);
 
-    // when requested to destroy
+    // when "destroy" requested by opts
     if (opts === "destroy") {
       return;
     }
 
-    // set listeners
+    // set event listeners
     if (settings.mouse) {
       $el.on(namespacedEvents.mouseEvents, onActivity);
     }
@@ -94,7 +94,7 @@
       return namespacedEvents.join(' ');
     }
 
-    // clear any event listeners and reset plugin
+    // clear all event listeners & reset plugin
     function clear($el) {
       $el.off(namespacedEvents.mouseEvents);
       $el.off(namespacedEvents.keyboardEvents);
