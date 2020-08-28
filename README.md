@@ -3,8 +3,8 @@ The simplest yet effective jQuery idle (inactivity) plugin
 
 Download
 --------
-* [Uncompressed 1,945 bytes](https://raw.github.com/afklondon/jquery.inactivity/master/src/jquery.inactivity.js)
-* [Compressed 1,015 bytes](https://raw.github.com/afklondon/jquery.inactivity/master/src/jquery.inactivity.min.js)
+* [Uncompressed](https://raw.github.com/afklondon/jquery.inactivity/master/src/jquery.inactivity.js)
+* [Compressed](https://raw.github.com/afklondon/jquery.inactivity/master/src/jquery.inactivity.min.js)
 
 Purpose
 -------
