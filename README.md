@@ -1,5 +1,5 @@
 # jquery.inactivity
-The simplest yet effective jQuery idle plugin
+The simplest yet effective jQuery idle (inactivity) plugin
 
 Download
 --------
@@ -8,7 +8,7 @@ Download
 
 Purpose
 -------
-Listen for mouse, keyboard, touch and other custom events and fire "activity" and "inactivity" idle events
+Listen for mouse, keyboard, touch and other custom events and fire "activity" and "inactivity" idle (inactivity) events
 
 Usage
 -----
@@ -19,7 +19,7 @@ Add either the jquery.inactivity.js or jquery.inactivity.min.js along with the j
 <script type="text/javascript" src="jquery.inactivity.min.js"></script>
 ```
 
-Then call the plugin on the element that you want to attach it
+Then call the plugin on the jQuery element that you want to attach it
 
 ```javascript
 // attach to document
@@ -51,7 +51,7 @@ $(document).on("inactivity", function(){
 });
 ```
 
-And that's how you unattach the plugin
+And that is how you unattach the plugin from the jQuery element
 
 ```javascript
 // unattach from document
@@ -60,7 +60,7 @@ $(document).inactivity("destroy");
 
 Dependencies
 -------
-jQuery 1.7+, tested with 2.1.4 and 3.0.0
+jQuery 1.7+, also tested with 2.1.4 and 3.0.0
 
 Browser Support
 -------
